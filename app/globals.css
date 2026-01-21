@@ -1,26 +1,114 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Layout */
+.page {
+  min-height: 100vh;
+  background-color: #fff7ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.card {
+  background: #ffffff;
+  max-width: 720px;
+  width: 100%;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Header */
+.title {
+  color: #f97316;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* Section */
+.section {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 18px;
+  color: #374151;
+  border-left: 4px solid #f97316;
+  padding-left: 10px;
+  margin-bottom: 12px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* Result */
+.result-box {
+  background-color: #ffedd5;
+  border: 1px solid #fed7aa;
+  padding: 20px;
+  border-radius: 8px;
+  color: #7c2d12;
+}
+
+.restitusi {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* ===============================
+   FORM TABLE
+================================ */
+
+.form-table {
+  display: grid;
+  gap: 20px;
+}
+
+.form-table.three-col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.form-table.two-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .form-table.three-col,
+  .form-table.two-col {
+    grid-template-columns: 1fr;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+/* Input height seragam */
+.form-group input {
+  height: 40px;
+  border-radius: 6px;
+  border-color: #d5bda1;
+  background-color: #f9efe5;
+  padding-left: 10px;
 }
