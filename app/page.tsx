@@ -117,7 +117,7 @@ export default function Home() {
             </div>
 
             <div className="form-group">
-              <label>Waktu gangguan yang diperbolehkan (SLA)</label>
+              <label>Waktu gangguan yang diperbolehkan</label>
               <input
                 type="time"
                 step="1"
