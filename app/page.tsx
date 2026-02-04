@@ -164,13 +164,6 @@ export default function Home() {
     </div>
   </div>
 </div>
-
-  <div className="equal">=</div>
-
-  <div className="result-money">
-    Rp {Math.round(restitusi).toLocaleString("id-ID")}
-  </div>
-</div>
           
           <p>
             <b>waktu gangguan yang diperbolehkan per bulan(SLA):</b>{" "}
