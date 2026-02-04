@@ -108,23 +108,24 @@ export default function Home() {
           <h3 className="section-title">Waktu Downtime</h3>
 
           <div className="form-table two-col">
+        
             <div className="form-group">
-              <label>Waktu Masuk</label>
-              <input
-                type="time"
-                step="1"
-                value={masuk}
-                onChange={(e) => setMasuk(e.target.value)}
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Waktu Keluar</label>
+              <label>Waktu gangguan koneksi per-bulan</label>
               <input
                 type="time"
                 step="1"
                 value={keluar}
                 onChange={(e) => setKeluar(e.target.value)}
+              />
+            </div>
+            
+            <div className="form-group">
+              <label>Waktu gangguan koneksi yang diperbolehkan per-bulan</label>
+              <input
+                type="time"
+                step="1"
+                value={masuk}
+                onChange={(e) => setMasuk(e.target.value)}
               />
             </div>
           </div>
