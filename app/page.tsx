@@ -135,13 +135,7 @@ export default function Home() {
           <p>
             <b>waktu gangguan per bulan:</b> {jam} Jam {menit} Menit {detikSisa} Detik
           </p>
-
-          /* <p>
-            <b>Total Downtime Aktual:</b> {jamDesimal.toFixed(4)} Jam
-          </p> */
-
           <hr />
-
           <p>
             <b>Rumus SLA:</b><br />
             <span className="formula">
