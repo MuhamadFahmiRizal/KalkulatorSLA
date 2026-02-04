@@ -23,9 +23,9 @@ export default function Home() {
   /* ======================
      INPUT STATE
   ====================== */
-  const [sla, setSla] = useState<string>("99.5");
-  const [hari, setHari] = useState<string>("30");
-  const [biaya, setBiaya] = useState<string>("3000000");
+  const [sla, setSla] = useState("99.5");
+  const [hari, setHari] = useState("30");
+  const [biaya, setBiaya] = useState("3000000");
 
   const [masuk, setMasuk] = useState("13:12:00");
   const [keluar, setKeluar] = useState("16:36:00");
@@ -33,9 +33,9 @@ export default function Home() {
   /* ======================
      KONVERSI KE NUMBER
   ====================== */
-  const slaNum = Number(sla || 0);
-  const hariNum = Number(hari || 0);
-  const biayaNum = Number(biaya || 0);
+  const slaNum = Number(sla);
+  const hariNum = Number(hari);
+  const biayaNum = Number(biaya);
 
   const { detik, jamDesimal } = hitungDowntime(masuk, keluar);
   const totalJam = 24 * hariNum;
@@ -46,12 +46,9 @@ export default function Home() {
   const menit = Math.floor((detik % 3600) / 60);
   const detikSisa = detik % 60;
 
-  /*======================
-   DOWNTIME MAKSIMUM SLA (VERSI PRAKTIS)
-   RUMUS:
-   (100 - SLA) / 100 × (24 jam × jumlah hari)
-  =======================*/
-
+  /* ======================
+     DOWNTIME MAKSIMUM SLA
+  ====================== */
   const maxDowntimeJam =
     ((100 - slaNum) / 100) * (24 * hariNum);
 
@@ -61,7 +58,6 @@ export default function Home() {
   const maxMenit = Math.floor((maxDowntimeDetik % 3600) / 60);
   const maxDetik = maxDowntimeDetik % 60;
 
-
   return (
     <main className="page">
       <div className="card">
@@ -70,6 +66,7 @@ export default function Home() {
           Perhitungan downtime dan restitusi layanan jaringan
         </p>
 
+        {/* ================= PARAMETER SLA ================= */}
         <section className="section">
           <h3 className="section-title">Parameter SLA</h3>
 
@@ -104,13 +101,13 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ================= WAKTU DOWNTIME ================= */}
         <section className="section">
           <h3 className="section-title">Waktu Downtime</h3>
 
           <div className="form-table two-col">
-        
             <div className="form-group">
-              <label>Waktu gangguan koneksi per-bulan</label>
+              <label>Waktu gangguan koneksi per bulan</label>
               <input
                 type="time"
                 step="1"
@@ -118,9 +115,9 @@ export default function Home() {
                 onChange={(e) => setKeluar(e.target.value)}
               />
             </div>
-            
+
             <div className="form-group">
-              <label>Waktu gangguan koneksi yang diperbolehkan per-bulan</label>
+              <label>Waktu gangguan yang diperbolehkan (SLA)</label>
               <input
                 type="time"
                 step="1"
@@ -131,6 +128,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ================= HASIL ================= */}
         <section className="result-box">
           <p>
             <b>Rumus SLA:</b><br />
@@ -138,40 +136,32 @@ export default function Home() {
               (100% − {slaNum}%) / 100% × (24 jam × {hariNum} hari)
             </span>
           </p>
+
           <p>
-            <b>waktu gangguan per bulan:</b> {jam} Jam {menit} Menit {detikSisa} Detik
+            <b>Waktu gangguan per bulan:</b>{" "}
+            {jam} Jam {menit} Menit {detikSisa} Detik
           </p>
+
           <hr />
 
-<p><b>Rumus Restitusi (Input):</b></p>
+          <p><b>Rumus Restitusi (Input):</b></p>
 
-<div className="formula-box">
-  <div className="formula-fraction">
-    <div className="top">
-      <span className="time">{keluar}</span>
-      <span className="operator">−</span>
-      <span className="time">{masuk}</span>
-      <span classname="formula">/ 24 × {hariNum}</span>
-      <span className="operator">×</span>
-      <span className="money">
-        Rp {biayaNum.toLocaleString("id-ID")}
-      </span>
-    </div>
+          <div className="formula-inline">
+            <span className="time">{keluar}</span>
+            <span className="operator">−</span>
+            <span className="time">{masuk}</span>
+            <span className="operator">/</span>
+            <span className="denominator">24 × {hariNum}</span>
+            <span className="operator">×</span>
+            <span className="money">
+              Rp {biayaNum.toLocaleString("id-ID")}
+            </span>
+          </div>
 
-    <div className="line"></div>
-
-    <div className="bottom">
-      24 × {hariNum}
-    </div>
-  </div>
-</div>
-          
           <p>
-            <b>waktu gangguan yang diperbolehkan per bulan(SLA):</b>{" "}
+            <b>Waktu gangguan yang diperbolehkan (SLA):</b>{" "}
             {maxJam} Jam {maxMenit} Menit {maxDetik} Detik
           </p>
-
-
 
           <p className="restitusi">
             Restitusi: Rp {Math.round(restitusi).toLocaleString("id-ID")}
