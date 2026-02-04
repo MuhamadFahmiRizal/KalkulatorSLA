@@ -133,17 +133,17 @@ export default function Home() {
 
         <section className="result-box">
           <p>
-            <b>Downtime Aktual:</b> {jam} Jam {menit} Menit {detikSisa} Detik
+            <b>waktu gangguan per bulan:</b> {jam} Jam {menit} Menit {detikSisa} Detik
           </p>
 
-          <p>
+          /* <p>
             <b>Total Downtime Aktual:</b> {jamDesimal.toFixed(4)} Jam
-          </p>
+          </p> */
 
           <hr />
 
           <p>
-            <b>Rumus Downtime SLA:</b><br />
+            <b>Rumus SLA:</b><br />
             <span className="formula">
               (100% − {slaNum}%) / 100% × (24 jam × {hariNum} hari)
             </span>
@@ -151,7 +151,7 @@ export default function Home() {
           </p>
 
           <p>
-            <b>Downtime Maksimum (SLA):</b>{" "}
+            <b>waktu gangguan yang diperbolehkan per bulan(SLA):</b>{" "}
             {maxJam} Jam {maxMenit} Menit {maxDetik} Detik
           </p>
 
