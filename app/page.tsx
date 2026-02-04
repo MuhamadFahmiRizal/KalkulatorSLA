@@ -148,9 +148,10 @@ export default function Home() {
 <div className="formula-box">
   <div className="formula-fraction">
     <div className="top">
-      <span className="time">{masuk}</span>
-      <span className="operator">−</span>
       <span className="time">{keluar}</span>
+      <span className="operator">−</span>
+      <span className="time">{masuk}</span>
+      <span classname="formula">/ 24 × {hariNum}</span>
       <span className="operator">×</span>
       <span className="money">
         Rp {biayaNum.toLocaleString("id-ID")}
