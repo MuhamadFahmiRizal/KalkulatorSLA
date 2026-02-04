@@ -133,17 +133,46 @@ export default function Home() {
 
         <section className="result-box">
           <p>
-            <b>waktu gangguan per bulan:</b> {jam} Jam {menit} Menit {detikSisa} Detik
-          </p>
-          <hr />
-          <p>
             <b>Rumus SLA:</b><br />
             <span className="formula">
               (100% − {slaNum}%) / 100% × (24 jam × {hariNum} hari)
             </span>
-
           </p>
+          <p>
+            <b>waktu gangguan per bulan:</b> {jam} Jam {menit} Menit {detikSisa} Detik
+          </p>
+          <hr />
 
+<p><b>Perhitungan Restitusi:</b></p>
+
+<div className="formula-box">
+  <div className="formula-fraction">
+    <div className="top">
+      <span className="time">
+        {jam.toString().padStart(2, "0")}:
+        {menit.toString().padStart(2, "0")}:
+        {detikSisa.toString().padStart(2, "0")}
+      </span>
+      <span className="operator">×</span>
+      <span className="money">
+        Rp {biayaNum.toLocaleString("id-ID")}
+      </span>
+    </div>
+
+    <div className="line"></div>
+
+    <div className="bottom">
+      24 × {hariNum}
+    </div>
+  </div>
+
+  <div className="equal">=</div>
+
+  <div className="result-money">
+    Rp {Math.round(restitusi).toLocaleString("id-ID")}
+  </div>
+</div>
+          
           <p>
             <b>waktu gangguan yang diperbolehkan per bulan(SLA):</b>{" "}
             {maxJam} Jam {maxMenit} Menit {maxDetik} Detik
