@@ -143,16 +143,14 @@ export default function Home() {
           </p>
           <hr />
 
-<p><b>Perhitungan Restitusi:</b></p>
+<p><b>Rumus Restitusi (Input):</b></p>
 
 <div className="formula-box">
   <div className="formula-fraction">
     <div className="top">
-      <span className="time">
-        {jam.toString().padStart(2, "0")}:
-        {menit.toString().padStart(2, "0")}:
-        {detikSisa.toString().padStart(2, "0")}
-      </span>
+      <span className="time">{masuk}</span>
+      <span className="operator">−</span>
+      <span className="time">{keluar}</span>
       <span className="operator">×</span>
       <span className="money">
         Rp {biayaNum.toLocaleString("id-ID")}
@@ -165,6 +163,7 @@ export default function Home() {
       24 × {hariNum}
     </div>
   </div>
+</div>
 
   <div className="equal">=</div>
 
