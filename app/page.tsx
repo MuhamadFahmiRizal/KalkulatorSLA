@@ -144,7 +144,7 @@ export default function Home() {
 
           <hr />
 
-          <p><b>Rumus Restitusi (Input):</b></p>
+          <p><b>Rumus Restitusi:</b></p>
 
           <div className="formula-inline">
             <span className="time">{keluar}</span>
@@ -159,7 +159,7 @@ export default function Home() {
           </div>
 
           <p>
-            <b>Waktu gangguan yang diperbolehkan (SLA):</b>{" "}
+            <b>Waktu gangguan yang diperbolehkan:</b>{" "}
             {maxJam} Jam {maxMenit} Menit {maxDetik} Detik
           </p>
 
